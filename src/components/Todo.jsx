@@ -1,8 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { AiFillEdit } from 'react-icons/ai';
-import { FaTrash } from 'react-icons/fa';
+import EditAndDelete from './EditAndDelete';
 
 const Todo = ({
   todo, setTodos, deleteTodo, editTodo,
@@ -43,20 +42,13 @@ const Todo = ({
           style={editMode}
           className="text-input"
         />
-        <div className="buttons">
-          <button
-            type="button"
-            onClick={() => {
-              setEditing(!editing);
-              editTodo(todo.id);
-            }}
-          >
-            <AiFillEdit />
-          </button>
-          <button type="button" onClick={() => deleteTodo(todo.id)}>
-            <FaTrash />
-          </button>
-        </div>
+        <EditAndDelete
+          setEditing={setEditing}
+          editing={editing}
+          editTodo={editTodo}
+          todo={todo}
+          deleteTodo={deleteTodo}
+        />
       </div>
     </div>
   );
